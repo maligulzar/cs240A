@@ -1,0 +1,62 @@
+!db2start;
+connect to sample;
+drop table MushroomsTest;
+drop table MushroomsTrain;
+		Create Table MushroomsTest(
+		 id integer not null ,
+		 class varchar(1) ,
+		 capshape varchar(1) ,  
+		 capsurface varchar(1) ,
+		 capcolour varchar(1) , 
+		 bruise  varchar(1) , 
+		 odor varchar(1) ,
+		 attchmnt  varchar(1) ,
+		 spacing  varchar(1) ,
+		 size    varchar(1) ,  
+		 colour  varchar(1) ,
+		 shape  varchar(1) ,
+		 root   varchar(1) ,  
+		 sAbv   varchar(1) ,  
+		 sBelw  varchar(1) ,  
+		 cAbv    varchar(1) , 
+		 cBelw  varchar(1) ,   
+		vType  varchar(1) ,  
+		 vColour varchar(1) , 
+		 rNumber varchar(1) , 
+		 rType  varchar(1) ,   
+		 sColour varchar(1) ,  
+		 pop   varchar(1) , 
+		 habitat  varchar(1) 
+		 );
+
+
+ 		Create Table MushroomsTrain(
+		 id integer not null ,
+		 class varchar(1) ,
+		 capshape varchar(1) ,  
+		 capsurface varchar(1) ,
+		 capcolour varchar(1) , 
+		 bruise  varchar(1) , 
+		 odor varchar(1) ,
+		 attchmnt  varchar(1) ,
+		 spacing  varchar(1) ,
+		 size    varchar(1) ,  
+		 colour  varchar(1) ,
+		 shape  varchar(1) ,
+		 root   varchar(1) ,  
+		 sAbv   varchar(1) ,  
+		 sBelw  varchar(1) ,  
+		 cAbv    varchar(1) , 
+		 cBelw  varchar(1) ,   
+		vType  varchar(1) ,  
+		 vColour varchar(1) , 
+		 rNumber varchar(1) , 
+		 rType  varchar(1) ,   
+		 sColour varchar(1) ,  
+		 pop   varchar(1) , 
+		 habitat  varchar(1) 
+		 );
+
+insert into mushroomstest(select * from mushrooms where RAND() < 0.25);
+insert into mushroomstrain(select * from mushrooms where id not in(select id from mushroomstest));
+terminate;
