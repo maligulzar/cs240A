@@ -1,13 +1,18 @@
-connect to sample;
+CONNECT TO sample; 
 
-drop table resultr;
+DROP TABLE resultr; 
 
-CREATE TABLE resultr(row INTEGER, actual VARCHAR(1), predicted VARCHAR(1));
+CREATE TABLE resultr 
+  ( 
+     ROW INTEGER,actual VARCHAR(1),predicted VARCHAR(1) 
+  ); 
 
-INSERT INTO resultr(row, actual, predicted)
-	(SELECT t.id, t.class, r.class
-		FROM mushroomstestset AS t, rclass AS r
-		WHERE t.type = r.type AND t.dataval = r.dataval
-		AND t.dataval!= '?');
- 
- terminate;
+INSERT INTO resultr 
+            (ROW,actual,predicted) 
+(SELECT t.id,t.class,r.class 
+ FROM   mushroomstestset AS t,rclass AS r 
+ WHERE  t.TYPE = r.TYPE 
+        AND t.dataval = r.dataval 
+        AND t.dataval != '?'); 
+
+terminate; 

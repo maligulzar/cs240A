@@ -1,62 +1,66 @@
-!db2start;
-connect to sample;
-drop table MushroomsTest;
-drop table MushroomsTrain;
-		Create Table MushroomsTest(
-		 id integer not null ,
-		 class varchar(1) ,
-		 capshape varchar(1) ,  
-		 capsurface varchar(1) ,
-		 capcolour varchar(1) , 
-		 bruise  varchar(1) , 
-		 odor varchar(1) ,
-		 attchmnt  varchar(1) ,
-		 spacing  varchar(1) ,
-		 size    varchar(1) ,  
-		 colour  varchar(1) ,
-		 shape  varchar(1) ,
-		 root   varchar(1) ,  
-		 sAbv   varchar(1) ,  
-		 sBelw  varchar(1) ,  
-		 cAbv    varchar(1) , 
-		 cBelw  varchar(1) ,   
-		vType  varchar(1) ,  
-		 vColour varchar(1) , 
-		 rNumber varchar(1) , 
-		 rType  varchar(1) ,   
-		 sColour varchar(1) ,  
-		 pop   varchar(1) , 
-		 habitat  varchar(1) 
-		 );
-
-
- 		Create Table MushroomsTrain(
-		 id integer not null ,
-		 class varchar(1) ,
-		 capshape varchar(1) ,  
-		 capsurface varchar(1) ,
-		 capcolour varchar(1) , 
-		 bruise  varchar(1) , 
-		 odor varchar(1) ,
-		 attchmnt  varchar(1) ,
-		 spacing  varchar(1) ,
-		 size    varchar(1) ,  
-		 colour  varchar(1) ,
-		 shape  varchar(1) ,
-		 root   varchar(1) ,  
-		 sAbv   varchar(1) ,  
-		 sBelw  varchar(1) ,  
-		 cAbv    varchar(1) , 
-		 cBelw  varchar(1) ,   
-		vType  varchar(1) ,  
-		 vColour varchar(1) , 
-		 rNumber varchar(1) , 
-		 rType  varchar(1) ,   
-		 sColour varchar(1) ,  
-		 pop   varchar(1) , 
-		 habitat  varchar(1) 
-		 );
-
-insert into mushroomstest(select * from mushrooms where RAND() < 0.25);
-insert into mushroomstrain(select * from mushrooms where id not in(select id from mushroomstest));
-terminate;
+!db2start;CONNECT TO sample;DROP TABLE mushroomstest;DROP TABLE mushroomstrain;CREATE TABLE mushroomstest
+             ( 
+                          id         INTEGER NOT NULL , 
+                          class      VARCHAR(1) , 
+                          capshape   VARCHAR(1) , 
+                          capsurface VARCHAR(1) , 
+                          capcolour  VARCHAR(1) , 
+                          bruise     VARCHAR(1) , 
+                          odor       VARCHAR(1) , 
+                          attchmnt   VARCHAR(1) , 
+                          spacing    VARCHAR(1) , 
+                          size       VARCHAR(1) , 
+                          colour     VARCHAR(1) , 
+                          shape      VARCHAR(1) , 
+                          root       VARCHAR(1) , 
+                          sabv       VARCHAR(1) , 
+                          sbelw      VARCHAR(1) , 
+                          cabv       VARCHAR(1) , 
+                          cbelw      VARCHAR(1) , 
+                          vtype      VARCHAR(1) , 
+                          vcolour    VARCHAR(1) , 
+                          rnumber    VARCHAR(1) , 
+                          rtype      VARCHAR(1) , 
+                          scolour    VARCHAR(1) , 
+                          pop        VARCHAR(1) , 
+                          habitat    VARCHAR(1) 
+             );CREATE TABLE mushroomstrain 
+             ( 
+                          id         INTEGER NOT NULL , 
+                          class      VARCHAR(1) , 
+                          capshape   VARCHAR(1) , 
+                          capsurface VARCHAR(1) , 
+                          capcolour  VARCHAR(1) , 
+                          bruise     VARCHAR(1) , 
+                          odor       VARCHAR(1) , 
+                          attchmnt   VARCHAR(1) , 
+                          spacing    VARCHAR(1) , 
+                          size       VARCHAR(1) , 
+                          colour     VARCHAR(1) , 
+                          shape      VARCHAR(1) , 
+                          root       VARCHAR(1) , 
+                          sabv       VARCHAR(1) , 
+                          sbelw      VARCHAR(1) , 
+                          cabv       VARCHAR(1) , 
+                          cbelw      VARCHAR(1) , 
+                          vtype      VARCHAR(1) , 
+                          vcolour    VARCHAR(1) , 
+                          rnumber    VARCHAR(1) , 
+                          rtype      VARCHAR(1) , 
+                          scolour    VARCHAR(1) , 
+                          pop        VARCHAR(1) , 
+                          habitat    VARCHAR(1) 
+             );INSERT INTO mushroomstest 
+            ( 
+                   select * 
+                   from   mushrooms 
+                   WHERE  rand() < 0.25 
+            );INSERT INTO mushroomstrain 
+            ( 
+                   select * 
+                   from   mushrooms 
+                   WHERE  id NOT IN 
+                          ( 
+                                 SELECT id 
+                                 FROM   mushroomstest) 
+            );terminate;

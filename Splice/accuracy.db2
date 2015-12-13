@@ -1,11 +1,24 @@
-connect to sample;
+CONNECT TO sample; 
 
-drop table accuracy;
+DROP TABLE accuracy; 
 
-CREATE TABLE accuracy(class varchar(3), accuracy double);
+CREATE TABLE accuracy 
+  ( 
+     class VARCHAR(3),accuracy DOUBLE 
+  ); 
 
-INSERT INTO accuracy VALUES ('n' , cast((select count(*) from result where actual=predicted) as double) / cast((select count(*) from result) as double));
-INSERT INTO accuracy VALUES ('r' , cast((select count(*) from resultr where actual=predicted) as double) / cast((select count(*) from resultr) as double));
+INSERT INTO accuracy 
+VALUES      ('n',CAST((SELECT COUNT(*) 
+                       FROM   RESULT 
+                       WHERE  actual = predicted) AS DOUBLE) / 
+                              CAST((SELECT COUNT(*) 
+                                    FROM   RESULT) AS DOUBLE)); 
 
+INSERT INTO accuracy 
+VALUES      ('r',CAST((SELECT COUNT(*) 
+                       FROM   resultr 
+                       WHERE  actual = predicted) AS DOUBLE) / CAST( 
+                              (SELECT COUNT(*) 
+                               FROM   resultr) AS DOUBLE)); 
 
-terminate;
+terminate; 

@@ -1,133 +1,489 @@
+CONNECT TO sample; 
 
-connect to sample;
-drop table splicetestset;
-drop table splicetrainset;
-create table splicetestset(id INTEGER, type INTEGER, dataval varchar(1), class varchar(1), known INTEGER);
-create table splicetrainset(id INTEGER, type INTEGER, dataval varchar(1), class varchar(1), known INTEGER);
+DROP TABLE splicetestset; 
 
+DROP TABLE splicetrainset; 
 
-INSERT INTO splicetestset (select id, 1,Pn30, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 2,Pn29, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 3,Pn28, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 4,Pn27 , class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 5,Pn26, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 6,Pn25, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 7,Pn24, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 8,Pn23, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 9,Pn22, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 10,Pn21, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 11,Pn20, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 12,Pn19, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 13,Pn18, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 14,Pn17, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 15,Pn16, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 16,Pn15, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 17,Pn14, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 18,Pn13, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 19,Pn12, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 20,Pn11, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 21,Pn10, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 22,Pn9, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 23,Pn8, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 24,Pn7, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 25,Pn5, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 26,Pn4, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 27,Pn3, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 28,Pn2, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 29,Pn1, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 30,P1, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 31,P2, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 32,P3, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 33,P4 , class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 34,P5, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 35,P6, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 36,P7, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 37,P8, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 38,P9, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 39,P10, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 40,P11, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 41,P12, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 42,P13, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 43,P14, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 44,P15, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 45,P16, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 46,P17, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 47,P18, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 48,P19, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 49,P20, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 50,P21, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 51,P22, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 52,P23, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 53,P24, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 54,P25, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 55,P26, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 56,P27, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 57,P28, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 58,P29, class, 1 from splicetest);
-INSERT INTO splicetestset (select id, 59,P30, class, 1 from splicetest);
+CREATE TABLE splicetestset 
+  ( 
+     id INTEGER,TYPE INTEGER,dataval VARCHAR(1),class VARCHAR(1),known INTEGER 
+  ); 
 
+CREATE TABLE splicetrainset 
+  ( 
+     id INTEGER,TYPE INTEGER,dataval VARCHAR(1),class VARCHAR(1),known INTEGER 
+  ); 
 
+INSERT INTO splicetestset 
+(SELECT id,1,pn30,class,1 
+ FROM   splicetest); 
 
-INSERT INTO splicetrainset (select id, 1,Pn30, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 2,Pn29, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 3,Pn28, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 4,Pn27 , class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 5,Pn26, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 6,Pn25, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 7,Pn24, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 8,Pn23, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 9,Pn22, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 10,Pn21, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 11,Pn20, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 12,Pn19, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 13,Pn18, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 14,Pn17, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 15,Pn16, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 16,Pn15, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 17,Pn14, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 18,Pn13, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 19,Pn12, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 20,Pn11, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 21,Pn10, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 22,Pn9, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 23,Pn8, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 24,Pn7, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 25,Pn5, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 26,Pn4, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 27,Pn3, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 28,Pn2, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 29,Pn1, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 30,P1, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 31,P2, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 32,P3, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 33,P4 , class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 34,P5, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 35,P6, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 36,P7, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 37,P8, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 38,P9, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 39,P10, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 40,P11, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 41,P12, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 42,P13, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 43,P14, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 44,P15, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 45,P16, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 46,P17, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 47,P18, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 48,P19, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 49,P20, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 50,P21, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 51,P22, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 52,P23, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 53,P24, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 54,P25, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 55,P26, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 56,P27, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 57,P28, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 58,P29, class, 1 from splicetrain);
-INSERT INTO splicetrainset (select id, 59,P30, class, 1 from splicetrain);
+INSERT INTO splicetestset 
+(SELECT id,2,pn29,class,1 
+ FROM   splicetest); 
 
-terminate;
+INSERT INTO splicetestset 
+(SELECT id,3,pn28,class,1 
+ FROM   splicetest); 
 
+INSERT INTO splicetestset 
+(SELECT id,4,pn27,class,1 
+ FROM   splicetest); 
 
+INSERT INTO splicetestset 
+(SELECT id,5,pn26,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,6,pn25,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,7,pn24,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,8,pn23,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,9,pn22,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,10,pn21,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,11,pn20,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,12,pn19,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,13,pn18,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,14,pn17,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,15,pn16,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,16,pn15,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,17,pn14,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,18,pn13,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,19,pn12,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,20,pn11,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,21,pn10,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,22,pn9,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,23,pn8,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,24,pn7,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,25,pn5,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,26,pn4,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,27,pn3,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,28,pn2,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,29,pn1,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,30,p1,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,31,p2,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,32,p3,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,33,p4,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,34,p5,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,35,p6,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,36,p7,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,37,p8,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,38,p9,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,39,p10,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,40,p11,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,41,p12,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,42,p13,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,43,p14,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,44,p15,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,45,p16,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,46,p17,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,47,p18,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,48,p19,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,49,p20,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,50,p21,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,51,p22,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,52,p23,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,53,p24,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,54,p25,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,55,p26,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,56,p27,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,57,p28,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,58,p29,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetestset 
+(SELECT id,59,p30,class,1 
+ FROM   splicetest); 
+
+INSERT INTO splicetrainset 
+(SELECT id,1,pn30,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,2,pn29,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,3,pn28,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,4,pn27,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,5,pn26,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,6,pn25,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,7,pn24,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,8,pn23,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,9,pn22,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,10,pn21,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,11,pn20,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,12,pn19,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,13,pn18,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,14,pn17,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,15,pn16,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,16,pn15,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,17,pn14,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,18,pn13,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,19,pn12,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,20,pn11,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,21,pn10,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,22,pn9,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,23,pn8,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,24,pn7,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,25,pn5,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,26,pn4,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,27,pn3,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,28,pn2,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,29,pn1,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,30,p1,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,31,p2,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,32,p3,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,33,p4,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,34,p5,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,35,p6,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,36,p7,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,37,p8,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,38,p9,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,39,p10,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,40,p11,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,41,p12,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,42,p13,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,43,p14,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,44,p15,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,45,p16,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,46,p17,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,47,p18,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,48,p19,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,49,p20,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,50,p21,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,51,p22,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,52,p23,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,53,p24,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,54,p25,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,55,p26,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,56,p27,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,57,p28,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,58,p29,class,1 
+ FROM   splicetrain); 
+
+INSERT INTO splicetrainset 
+(SELECT id,59,p30,class,1 
+ FROM   splicetrain); 
+
+terminate; 

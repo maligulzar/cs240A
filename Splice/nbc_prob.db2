@@ -1,11 +1,19 @@
-connect to sample;
+CONNECT TO sample; 
 
+DROP TABLE classprob; 
 
-drop table classprob;
+CREATE TABLE classprob 
+  ( 
+     class VARCHAR(1),prob DOUBLE 
+  ); 
 
-create table classprob(class varchar(1) , prob double);
+INSERT INTO classprob 
+(SELECT class,CAST(val AS DOUBLE) / CAST((SELECT Sum(known) 
+                                          FROM   splicetrainset 
+                                          WHERE  TYPE = 1) AS DOUBLE) 
+ FROM   (SELECT class,Sum(known) AS val 
+         FROM   splicetrainset 
+         WHERE  TYPE = 1 
+         GROUP  BY class)); 
 
-INSERT INTO classprob
-	(SELECT class, CAST( val AS double) / CAST((SELECT SUM(known) FROM splicetrainset WHERE type = 1) AS double) FROM (SELECT class, SUM(known) as val FROM splicetrainset WHERE type = 1 GROUP BY class));
-	
-terminate;
+terminate; 

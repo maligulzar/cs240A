@@ -1,137 +1,52 @@
-connect to sample;
-drop table splicetest;
-drop table splicetrain;
+CONNECT TO sample; 
 
-Create Table splicetrain(
-		 id integer not null ,
-					class varchar(1),
-					 Pn30 varchar(1),
-					 Pn29 varchar(1), 
-					 Pn28 varchar(1), 
-					 Pn27 varchar(1), 
-					 Pn26 varchar(1), 
-					 Pn25 varchar(1),  
-					Pn24 varchar(1),
-					 Pn23 varchar(1), 
-					 Pn22 varchar(1), 
-					 Pn21 varchar(1), 
-					 Pn20 varchar(1), 
-					 Pn19 varchar(1), 
-					 Pn18 varchar(1), 
-					 Pn17 varchar(1), 
-					 Pn16 varchar(1), 
-					 Pn15 varchar(1), 
-					 Pn14 varchar(1), 
-					 Pn13 varchar(1), 
-					 Pn12 varchar(1), 
-					 Pn11 varchar(1), 
-					 Pn10 varchar(1), 
-					 Pn9 varchar(1), 
-					 Pn8 varchar(1), 
-					 Pn7 varchar(1), 
-					 Pn6 varchar(1), 
-					 Pn5 varchar(1), 
-					 Pn4 varchar(1), 
-					 Pn3 varchar(1), 
-					 Pn2 varchar(1), 
-					 Pn1 varchar(1), 
-					P1 varchar(1), 
-					 P2 varchar(1), 
-					 P3 varchar(1), 
-					 P4 varchar(1), 
-					 P5 varchar(1), 
-					 P6 varchar(1), 
-					 P7 varchar(1), 
-					 P8 varchar(1), 
-					 P9 varchar(1), 
-					 P10 varchar(1),
-					 P11 varchar(1),
-					 P12 varchar(1),
-					 P13 varchar(1),
-					 P14 varchar(1),
-					 P15 varchar(1),
-					 P16 varchar(1),
-					 P17 varchar(1),
-					 P18 varchar(1),
-					 P19 varchar(1),
-					 P20 varchar(1),
-					 P21 varchar(1),
-					 P22 varchar(1),
-					 P23 varchar(1),
-					 P24 varchar(1),
-					 P25 varchar(1),
-					 P26 varchar(1),
-					 P27 varchar(1),
-					 P28 varchar(1),
-					 P29 varchar(1),
-					 P30 varchar(1)
-		 );
-		 Create Table splicetest(
-		 id integer not null ,
-					class varchar(1),
-					 Pn30 varchar(1),
-					 Pn29 varchar(1), 
-					 Pn28 varchar(1), 
-					 Pn27 varchar(1), 
-					 Pn26 varchar(1), 
-					 Pn25 varchar(1),  
-					Pn24 varchar(1),
-					 Pn23 varchar(1), 
-					 Pn22 varchar(1), 
-					 Pn21 varchar(1), 
-					 Pn20 varchar(1), 
-					 Pn19 varchar(1), 
-					 Pn18 varchar(1), 
-					 Pn17 varchar(1), 
-					 Pn16 varchar(1), 
-					 Pn15 varchar(1), 
-					 Pn14 varchar(1), 
-					 Pn13 varchar(1), 
-					 Pn12 varchar(1), 
-					 Pn11 varchar(1), 
-					 Pn10 varchar(1), 
-					 Pn9 varchar(1), 
-					 Pn8 varchar(1), 
-					 Pn7 varchar(1), 
-					 Pn6 varchar(1), 
-					 Pn5 varchar(1), 
-					 Pn4 varchar(1), 
-					 Pn3 varchar(1), 
-					 Pn2 varchar(1), 
-					 Pn1 varchar(1), 
-					P1 varchar(1), 
-					 P2 varchar(1), 
-					 P3 varchar(1), 
-					 P4 varchar(1), 
-					 P5 varchar(1), 
-					 P6 varchar(1), 
-					 P7 varchar(1), 
-					 P8 varchar(1), 
-					 P9 varchar(1), 
-					 P10 varchar(1),
-					 P11 varchar(1),
-					 P12 varchar(1),
-					 P13 varchar(1),
-					 P14 varchar(1),
-					 P15 varchar(1),
-					 P16 varchar(1),
-					 P17 varchar(1),
-					 P18 varchar(1),
-					 P19 varchar(1),
-					 P20 varchar(1),
-					 P21 varchar(1),
-					 P22 varchar(1),
-					 P23 varchar(1),
-					 P24 varchar(1),
-					 P25 varchar(1),
-					 P26 varchar(1),
-					 P27 varchar(1),
-					 P28 varchar(1),
-					 P29 varchar(1),
-					 P30 varchar(1)
-		 );
+DROP TABLE splicetest; 
 
+DROP TABLE splicetrain; 
 
-insert into splicetest(select * from splice where RAND() < 0.25);
-insert into splicetrain(select * from splice where id not in(select id from splicetest));
-terminate;
+CREATE TABLE splicetrain 
+  ( 
+     id INTEGER NOT NULL,class VARCHAR(1),pn30 VARCHAR(1),pn29 VARCHAR(1),pn28 
+     VARCHAR(1),pn27 VARCHAR(1),pn26 VARCHAR(1),pn25 VARCHAR(1),pn24 VARCHAR(1), 
+     pn23 VARCHAR(1),pn22 VARCHAR(1),pn21 VARCHAR(1),pn20 VARCHAR(1),pn19 
+     VARCHAR(1),pn18 VARCHAR(1),pn17 VARCHAR(1),pn16 VARCHAR(1),pn15 VARCHAR(1), 
+     pn14 VARCHAR(1),pn13 VARCHAR(1),pn12 VARCHAR(1),pn11 VARCHAR(1),pn10 
+     VARCHAR(1),pn9 VARCHAR(1),pn8 VARCHAR(1),pn7 VARCHAR(1),pn6 VARCHAR(1),pn5 
+     VARCHAR(1),pn4 VARCHAR(1),pn3 VARCHAR(1),pn2 VARCHAR(1),pn1 VARCHAR(1),p1 
+     VARCHAR(1),p2 VARCHAR(1),p3 VARCHAR(1),p4 VARCHAR(1),p5 VARCHAR(1),p6 
+     VARCHAR(1),p7 VARCHAR(1),p8 VARCHAR(1),p9 VARCHAR(1),p10 VARCHAR(1),p11 
+     VARCHAR(1),p12 VARCHAR(1),p13 VARCHAR(1),p14 VARCHAR(1),p15 VARCHAR(1),p16 
+     VARCHAR(1),p17 VARCHAR(1),p18 VARCHAR(1),p19 VARCHAR(1),p20 VARCHAR(1),p21 
+     VARCHAR(1),p22 VARCHAR(1),p23 VARCHAR(1),p24 VARCHAR(1),p25 VARCHAR(1),p26 
+     VARCHAR(1),p27 VARCHAR(1),p28 VARCHAR(1),p29 VARCHAR(1),p30 VARCHAR(1) 
+  ); 
+
+CREATE TABLE splicetest 
+  ( 
+     id INTEGER NOT NULL,class VARCHAR(1),pn30 VARCHAR(1),pn29 VARCHAR(1),pn28 
+     VARCHAR(1),pn27 VARCHAR(1),pn26 VARCHAR(1),pn25 VARCHAR(1),pn24 VARCHAR(1), 
+     pn23 VARCHAR(1),pn22 VARCHAR(1),pn21 VARCHAR(1),pn20 VARCHAR(1),pn19 
+     VARCHAR(1),pn18 VARCHAR(1),pn17 VARCHAR(1),pn16 VARCHAR(1),pn15 VARCHAR(1), 
+     pn14 VARCHAR(1),pn13 VARCHAR(1),pn12 VARCHAR(1),pn11 VARCHAR(1),pn10 
+     VARCHAR(1),pn9 VARCHAR(1),pn8 VARCHAR(1),pn7 VARCHAR(1),pn6 VARCHAR(1),pn5 
+     VARCHAR(1),pn4 VARCHAR(1),pn3 VARCHAR(1),pn2 VARCHAR(1),pn1 VARCHAR(1),p1 
+     VARCHAR(1),p2 VARCHAR(1),p3 VARCHAR(1),p4 VARCHAR(1),p5 VARCHAR(1),p6 
+     VARCHAR(1),p7 VARCHAR(1),p8 VARCHAR(1),p9 VARCHAR(1),p10 VARCHAR(1),p11 
+     VARCHAR(1),p12 VARCHAR(1),p13 VARCHAR(1),p14 VARCHAR(1),p15 VARCHAR(1),p16 
+     VARCHAR(1),p17 VARCHAR(1),p18 VARCHAR(1),p19 VARCHAR(1),p20 VARCHAR(1),p21 
+     VARCHAR(1),p22 VARCHAR(1),p23 VARCHAR(1),p24 VARCHAR(1),p25 VARCHAR(1),p26 
+     VARCHAR(1),p27 VARCHAR(1),p28 VARCHAR(1),p29 VARCHAR(1),p30 VARCHAR(1) 
+  ); 
+
+INSERT INTO splicetest 
+(SELECT * 
+ FROM   splice 
+ WHERE  Rand() < 0.25); 
+
+INSERT INTO splicetrain 
+(SELECT * 
+ FROM   splice 
+ WHERE  id NOT IN(SELECT id 
+                  FROM   splicetest)); 
+
+terminate; 

@@ -1,36 +1,54 @@
-connect to sample;
-drop table rclass;
-create table rclass( type Integer, dataval varchar(1), class varchar(1));
+CONNECT TO sample; 
 
+DROP TABLE rclass; 
 
+CREATE TABLE rclass 
+  ( 
+     TYPE INTEGER,dataval VARCHAR(1),class VARCHAR(1) 
+  ); 
 
-	insert into rclass(type, class, dataval)
-	WITH grouped(type, class, dataval, sum_weight) AS (SELECT type,class,dataval,SUM(known) FROM mushroomstrainset GROUP BY GROUPING SETS( (type, dataval),(type, class, dataval) )),
-	
-	errortable(type, class, dataval, error, total) AS		
-		(SELECT t.type, t.class, t.dataval,
-			CAST(t.sum_weight AS double)
-				,
-			CAST(t2.sum_weight AS double)
-		FROM grouped AS t, grouped AS t2
-		WHERE t.type = t2.type
-		AND t2.class IS NULL
-		AND t.class IS NOT NULL
-		AND t.dataval = t2.dataval
-	),
-	
-	errortotal(type, dataval, error) AS	
-	(select type, dataval, Min(error) from errortable group by GROUPING SETS((type, dataval))),
-	
-	errortypetotal(type, dataval, error,class,  total) AS (select e1.type, e1.dataval , e1.error, e2.class, e2.total from errortotal e1, errortable e2 where e1.type=e2.type and e1.dataval=e2.dataval and e2.error=e1.error),
-	
-	errorfinal(type, error) AS
-	(select type, Min(error)/SUM(total)  from errortypetotal group by type),
+INSERT INTO rclass 
+            (TYPE,class,dataval) 
+WITH grouped(type, class, dataval, sum_weight) 
+     AS (SELECT TYPE,class,dataval,Sum(known) 
+         FROM   mushroomstrainset 
+         GROUP  BY grouping sets( ( TYPE, dataval ), ( TYPE, class, dataval ) )) 
+, 
+     errortable(type, class, dataval, error, total) 
+     AS (SELECT t.TYPE,t.class,t.dataval,CAST(t.sum_weight AS DOUBLE),CAST( 
+                   t2.sum_weight AS DOUBLE) 
+         FROM   grouped AS t,grouped AS t2 
+         WHERE  t.TYPE = t2.TYPE 
+                AND t2.class IS NULL 
+                AND t.class IS NOT NULL 
+                AND t.dataval = t2.dataval), 
+     errortotal(type, dataval, error) 
+     AS (SELECT TYPE,dataval,Min(error) 
+         FROM   errortable 
+         GROUP  BY grouping sets(( TYPE, dataval ))), 
+     errortypetotal(type, dataval, error, class, total) 
+     AS (SELECT e1.TYPE,e1.dataval,e1.error,e2.class,e2.total 
+         FROM   errortotal e1,errortable e2 
+         WHERE  e1.TYPE = e2.TYPE 
+                AND e1.dataval = e2.dataval 
+                AND e2.error = e1.error), 
+     errorfinal(type, error) 
+     AS (SELECT TYPE,Min(error) / Sum(total) 
+         FROM   errortypetotal 
+         GROUP  BY TYPE), 
+     subresult(type, class, dataval, error, total) 
+     AS (SELECT * 
+         FROM   errortable 
+         WHERE  dataval != '?' 
+                AND TYPE = (SELECT TYPE 
+                            FROM   errorfinal 
+                            WHERE  error = (SELECT Min(error) 
+                                            FROM   errorfinal))) 
+(SELECT s.TYPE,s.class,s.dataval 
+FROM   subresult s,(SELECT dataval,Max(error) AS error 
+FROM   subresult 
+GROUP  BY dataval) AS temp 
+WHERE  temp.error = s.error 
+AND temp.dataval = s.dataval); 
 
-	subresult(type, class, dataval, error, total) AS (select * from errortable where dataval!='?' and type=(select type from errorfinal where error = (select Min(error) from errorfinal)))
-(select s.type, s.class, s.dataval from subresult s, (select dataval, max(error) as error from subresult group by dataval ) as temp where temp.error=s.error and temp.dataval=s.dataval);
-
-
-
-
-terminate;
+terminate; 

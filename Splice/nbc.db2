@@ -1,20 +1,23 @@
-connect to sample;
-drop table nbc;
-create table nbc( type Integer, dataval varchar(1), class varchar(1) , prob double );
+CONNECT TO sample; 
 
+DROP TABLE nbc; 
 
+CREATE TABLE nbc 
+  ( 
+     TYPE INTEGER,dataval VARCHAR(1),class VARCHAR(1),prob DOUBLE 
+  ); 
 
-INSERT INTO NBC
-	WITH temp(type, class, dataval, sum_weight) AS
-		(SELECT type, class, dataval, SUM(known) FROM splicetrainset GROUP BY GROUPING SETS( (type, class), (type, class, dataval)))(SELECT t.type, t.dataval, t.class,
-			CAST(t.sum_weight AS double)
-					/
-			CAST(t2.sum_weight AS double)
-		FROM temp AS t, temp AS t2
-		WHERE t.type = t2.type
-		AND t2.dataval IS NULL
-		AND t.dataval IS NOT NULL
-		AND t.class = t2.class
-	);
+INSERT INTO nbc 
+WITH temp(type, class, dataval, sum_weight) 
+     AS (SELECT TYPE,class,dataval,Sum(known) 
+         FROM   splicetrainset 
+         GROUP  BY grouping sets( ( TYPE, class ), ( TYPE, class, dataval ) )) 
+(SELECT t.TYPE,t.dataval,t.class,CAST(t.sum_weight AS DOUBLE) / CAST( 
+                                 t2.sum_weight AS DOUBLE) 
+FROM   temp AS t,temp AS t2 
+WHERE  t.TYPE = t2.TYPE 
+AND t2.dataval IS NULL 
+AND t.dataval IS NOT NULL 
+AND t.class = t2.class); 
 
-	terminate;
+terminate; 

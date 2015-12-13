@@ -1,62 +1,201 @@
+CONNECT TO sample; 
 
-connect to sample;
-drop table mushroomstestset;
-drop table mushroomstrainset;
-create table mushroomstestset(id INTEGER, type INTEGER, dataval varchar(1), class varchar(1), known INTEGER);
-create table mushroomstrainset(id INTEGER, type INTEGER, dataval varchar(1), class varchar(1), known INTEGER);
+DROP TABLE mushroomstestset; 
 
+DROP TABLE mushroomstrainset; 
 
-INSERT INTO mushroomstestset (select id, 1,capshape, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 2,capsurface, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 3,capcolour, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 4,bruise , class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 5,odor, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 6,attchmnt, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 7,spacing, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 8,size, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 9,colour, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 10,shape, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 11,root, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 12,sAbv, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 13,sBelw, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 14,cAbv, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 15,cBelw, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 16,vType, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 17,vColour, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 18,rNumber, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 19,rType, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 20,sColour, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 21,pop, class, 1 from mushroomstest);
-INSERT INTO mushroomstestset (select id, 22,habitat, class, 1 from mushroomstest);
+CREATE TABLE mushroomstestset 
+  ( 
+     id INTEGER,TYPE INTEGER,dataval VARCHAR(1),class VARCHAR(1),known INTEGER 
+  ); 
 
+CREATE TABLE mushroomstrainset 
+  ( 
+     id INTEGER,TYPE INTEGER,dataval VARCHAR(1),class VARCHAR(1),known INTEGER 
+  ); 
 
+INSERT INTO mushroomstestset 
+(SELECT id,1,capshape,class,1 
+ FROM   mushroomstest); 
 
-INSERT INTO mushroomstrainset (select id, 1,capshape, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 2,capsurface, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 3,capcolour, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 4,bruise , class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 5,odor, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 6,attchmnt, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 7,spacing, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 8,size, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 9,colour, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 10,shape, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 11,root, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 12,sAbv, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 13,sBelw, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 14,cAbv, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 15,cBelw, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 16,vType, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 17,vColour, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 18,rNumber, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 19,rType, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 20,sColour, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 21,pop, class, 1 from mushroomstrain);
-INSERT INTO mushroomstrainset (select id, 22,habitat, class, 1 from mushroomstrain);
+INSERT INTO mushroomstestset 
+(SELECT id,2,capsurface,class,1 
+ FROM   mushroomstest); 
 
-update mushroomstrainset set known=0  where dataval='?';
-update mushroomstestset set known=0  where dataval='?';
+INSERT INTO mushroomstestset 
+(SELECT id,3,capcolour,class,1 
+ FROM   mushroomstest); 
 
-terminate;
+INSERT INTO mushroomstestset 
+(SELECT id,4,bruise,class,1 
+ FROM   mushroomstest); 
 
+INSERT INTO mushroomstestset 
+(SELECT id,5,odor,class,1 
+ FROM   mushroomstest); 
 
+INSERT INTO mushroomstestset 
+(SELECT id,6,attchmnt,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,7,spacing,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,8,size,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,9,colour,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,10,shape,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,11,root,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,12,sabv,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,13,sbelw,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,14,cabv,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,15,cbelw,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,16,vtype,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,17,vcolour,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,18,rnumber,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,19,rtype,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,20,scolour,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,21,pop,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstestset 
+(SELECT id,22,habitat,class,1 
+ FROM   mushroomstest); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,1,capshape,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,2,capsurface,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,3,capcolour,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,4,bruise,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,5,odor,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,6,attchmnt,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,7,spacing,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,8,size,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,9,colour,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,10,shape,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,11,root,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,12,sabv,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,13,sbelw,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,14,cabv,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,15,cbelw,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,16,vtype,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,17,vcolour,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,18,rnumber,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,19,rtype,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,20,scolour,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,21,pop,class,1 
+ FROM   mushroomstrain); 
+
+INSERT INTO mushroomstrainset 
+(SELECT id,22,habitat,class,1 
+ FROM   mushroomstrain); 
+
+UPDATE mushroomstrainset 
+SET    known = 0 
+WHERE  dataval = '?'; 
+
+UPDATE mushroomstestset 
+SET    known = 0 
+WHERE  dataval = '?'; 
+
+terminate; 
